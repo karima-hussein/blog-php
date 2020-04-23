@@ -1,3 +1,4 @@
+<?php  ob_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +49,7 @@
                         <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="admin">admin</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
