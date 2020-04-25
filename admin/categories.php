@@ -1,7 +1,8 @@
 <?php 
+    $path="../";
+    $title = "Categories";
     include_once "../includes/admin_header.php"; 
     include_once "../includes/categories.php";
-    $title = "Categories";
     $cat = new category();
 ?>
     <!-- Navigation -->
@@ -65,7 +66,7 @@
                         }
                     }
                 ?>
-                <div class="col-lg-12">
+                <div class="col-lg-12 table-responsive">
                     <table class="table table-hover table-striped">
                         <thead class="bg-info">
                             <tr>

@@ -1,10 +1,19 @@
 <?php 
-    include_once "includes/db.php";
-    include_once "includes/interface.php";
+    require_once $path."includes/db.php";
+    require_once $path."includes/interface.php";
     class post extends database implements operation{
          var $key;
+         var $post_id;
+         var $post_title;
+         var $post_content;
+         var $post_author;
+         var $post_category;
+         var $post_tags;
+         var $post_image;
         //interface functions
-        function add(){}
+        function add(){
+
+        }
         function update(){}
         function delete(){}
         function search(){
@@ -12,7 +21,7 @@
             return parent::isExist($query);
         }
         function getAll(){
-            $query ="select * from post";
+            $query ="select * from post_view";
             return parent::isExist($query);
         }
 
@@ -37,5 +46,125 @@
 
                 return $this;
         }
+
+         /**
+          * Get the value of post_title
+          */ 
+         public function getPost_title()
+         {
+                  return $this->post_title;
+         }
+
+         /**
+          * Set the value of post_title
+          *
+          * @return  self
+          */ 
+         public function setPost_title($post_title)
+         {
+                  $this->post_title = $post_title;
+
+                  return $this;
+         }
+
+         /**
+          * Get the value of post_content
+          */ 
+         public function getPost_content()
+         {
+                  return $this->post_content;
+         }
+
+         /**
+          * Set the value of post_content
+          *
+          * @return  self
+          */ 
+         public function setPost_content($post_content)
+         {
+                  $this->post_content = $post_content;
+
+                  return $this;
+         }
+
+         /**
+          * Get the value of post_author
+          */ 
+         public function getPost_author()
+         {
+                  return $this->post_author;
+         }
+
+         /**
+          * Set the value of post_author
+          *
+          * @return  self
+          */ 
+         public function setPost_author($post_author)
+         {
+                  $this->post_author = $post_author;
+
+                  return $this;
+         }
+
+         /**
+          * Get the value of post_category
+          */ 
+         public function getPost_category()
+         {
+                  return $this->post_category;
+         }
+
+         /**
+          * Set the value of post_category
+          *
+          * @return  self
+          */ 
+         public function setPost_category($post_category)
+         {
+                  $this->post_category = $post_category;
+
+                  return $this;
+         }
+
+         /**
+          * Get the value of post_tags
+          */ 
+         public function getPost_tags()
+         {
+                  return $this->post_tags;
+         }
+
+         /**
+          * Set the value of post_tags
+          *
+          * @return  self
+          */ 
+         public function setPost_tags($post_tags)
+         {
+                  $this->post_tags = $post_tags;
+
+                  return $this;
+         }
+
+         /**
+          * Get the value of post_image
+          */ 
+         public function getPost_image()
+         {
+                  return $this->post_image;
+         }
+
+         /**
+          * Set the value of post_image
+          *
+          * @return  self
+          */ 
+         public function setPost_image($post_image)
+         {
+                  $this->post_image = $post_image;
+
+                  return $this;
+         }
     }
 ?>

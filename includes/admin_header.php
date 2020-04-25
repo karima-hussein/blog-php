@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin</title>
+    <title><?php echo $title;?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,6 +20,7 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.tiny.cloud/1/x3vkgux60k3gicas1d7xonh23nmj58hde6hz8bqqaznfjutt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

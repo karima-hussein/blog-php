@@ -50,7 +50,8 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#post"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="post" class="collapse">
                             <li>
-                                <a href="#">View all posts</a>
+                            <a href="posts.php">View all posts</a>
+                            <a href="add_post.php">Add post</a>
                             </li>
                         </ul>
                     </li>
@@ -77,9 +78,6 @@
                                 <a href="#">View all users</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="active">
-                        <a href="blank-page.php"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                     </li>
                 </ul>
             </div>

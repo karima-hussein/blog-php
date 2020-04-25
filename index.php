@@ -1,4 +1,5 @@
 <?php
+$path="";
  include_once "includes/header.php";
  include_once "includes/posts.php"; 
  $post = new post();
