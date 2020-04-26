@@ -1,4 +1,6 @@
-<?php include_once "../includes/admin_header.php"; ?>
+<?php 
+    $title="Dashboard";
+    include_once "../includes/admin_header.php"; ?>
     <!-- Navigation -->
     <?php include_once "../includes/admin_nav.php"; ?>
     <div id="page-wrapper">

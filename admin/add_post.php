@@ -27,30 +27,40 @@
                     </ol>
                 </div>
                 <div class="col-lg-12 table-responsive">
-                <?php
-                    if(isset($_POST['post_submit'])){
-                        $post->setPost_title($_POST['title']);
-                        $post->setPost_author($_POST['author']);
-                        $post->setPost_tags($_POST['tags']);
-                        $post->setPost_category($_POST['category']);
-                        $post->setPost_content($_POST['content']);
-                        $post->setPost_image($_POST['554545']);//for now
-                        $post->add();
-                    }
-                
-                ?>
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <?php
+                        if(isset($_POST['post_submit'])){
+                            $post->setPost_title($_POST['title']);
+                            $post->setPost_author($_POST['author']);
+                            $post->setPost_tags($_POST['tags']);
+                            $post->setPost_category($_POST['category']);
+                            $post->setPost_content($_POST['content']);
+                            $img_name= $_FILES['image']['name'];
+                            $img_temp =$_FILES['image']['tmp_name'];
+                            $des ="../images/$img_name";
+                            $post->setPost_image($des);
+                            move_uploaded_file($img_temp,$des);
+                            $r=$post->add();
+                            if($r='done'){
+                                // header('location:add_post.php');
+                                echo "done";
+                            }else{
+                                echo $r;
+                            }
+                        }
+                    
+                    ?>
+                    <form method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="title">Title:</label>
-                            <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required>
+                            <input type="text" value="<?php echo isset($_POST["title"]) ? $_POST["title"] : ''; ?>" class="form-control" id="title" placeholder="Enter title" name="title" required>
                         </div>
                         <div class="form-group">
                             <label for="author">Author:</label>
-                            <input type="text" class="form-control" id="author" placeholder="Enter author name" name="author" required>
+                            <input type="text" class="form-control" value="<?php echo isset($_POST["author"]) ? $_POST["author"] : ''; ?>"id="author" placeholder="Enter author name" name="author" required>
                         </div>
                         <div class="form-group">
                             <label for="tags">Tags:</label>
-                            <input type="text" class="form-control" id="tags" placeholder="Enter tags" name="tags" required>
+                            <input type="text" class="form-control" value="<?php echo isset($_POST["tags"]) ? $_POST["tags"] : ''; ?>" id="tags" placeholder="Enter tags" name="tags" required>
                         </div>
                         <div class="form-group">
                             <label for="category">Category:</label>
@@ -67,7 +77,7 @@
                         </div>
                         <div class="form-group">
                             <label for="mytextarea">Content:</label>
-                            <textarea class="form-control" rows="5" id="mytextarea" required></textarea>
+                            <textarea class="form-control"value="<?php echo isset($_POST["content"]) ? $_POST["content"] : ''; ?>" rows="5" id="mytextarea" name="content" ></textarea>
                         </div>
                         <div class="form-group">
                             <label for="image">Image:</label>

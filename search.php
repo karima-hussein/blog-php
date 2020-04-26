@@ -1,4 +1,6 @@
 <?php
+$title="search";
+$path="";
  include_once "includes/header.php";
  include_once "includes/posts.php"; 
  $ob = new post();
