@@ -15,7 +15,10 @@
             $query = "insert into post values(Default,'".$this->getPost_title()."','".$this->getPost_content()."','".$this->getPost_author()."','".$this->getPost_image()."','".$this->getPost_category()."',NOW(),'".$this->getPost_tags()."',Default,Default,NOW())";
             return parent::DML($query);
         }
-        public function update(){}
+        public function update(){
+            $query ="update post set post_title='".$this->getPost_title()."', post_author='".$this->getPost_author()."',post_tags='".$this->getPost_tags()."',post_content='".$this->getPost_content()."',post_image='".$this->getPost_image()."', cat_id='".$this->getPost_category()."' where post_id='".$this->getPost_id()."'";
+            return parent::DML($query);
+        }
         public function delete(){
             $query="delete from post where post_id='".$this->getPost_id()."'";
             return parent::DML($query);
@@ -28,11 +31,18 @@
             $query ="select * from post_view";
             return parent::isExist($query);
         }
+        public function viewAll(){
+            $query ="select * from post_view where post_status='1' ";
+            return parent::isExist($query);
+        }
         public function getById(){
             $query="select * from post where post_id='".$this->getPost_id()."'";
             return parent::isExist($query);
         }
-
+        public function publish(){
+            $query="update post set post_status='1' where post_id='".$this->getPost_id()."'";
+            return parent::DML($query); 
+        }
         //properties//
 
         /**

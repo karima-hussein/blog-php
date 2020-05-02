@@ -1,7 +1,8 @@
 <?php 
+    $path="../";
+    $title = "Category Update";
     include_once "../includes/admin_header.php"; 
     include_once "../includes/categories.php";
-    $title = "Category Update";
     $cat = new category();
 ?>
     <!-- Navigation -->

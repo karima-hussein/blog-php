@@ -19,41 +19,21 @@
                     </ol>
                 </div>
                 <div class="col-lg-12 table-responsive">
-                    <?php
-                        if(isset($_GET['del'])){
-                            if(!ctype_digit($_GET['del'])|| empty($_GET['del'])){
-                                // header('location:admin');
-                            }else{
-                                $post->setPost_id(intval($_GET['del']));
-                                $check = $post->getById();
-                                if(mysqli_num_rows($check)==0){
-                                    echo "the post doesn't exist";
-                                }else{
-                                    $delete=$post->delete();
-                                    if($delete=='done'){
-                                        header('location:posts.php');
-                                    }else{
-                                        echo "$delete";
-                                    }
-                                }
-                            }
-                        }
-                    ?>
                     <table class="table table-hover table-striped ">
                         <thead class="bg-info">
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Author</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Comments</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Tags</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Content</th>
-                            <th scope="col" colspan="2">Action</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Comments</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Tags</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Content</th>
+                                <th scope="col" colspan="3">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,14 +48,15 @@
                                 <td><?php echo ucfirst($row['post_author']);?></td>
                                 <td><?php echo ucfirst($row['post_date']);?></td>
                                 <td><?php echo ucfirst($row['created_at']);?></td>
-                                <td><img width='100px'height='auto' src="<?php echo ucfirst($row['post_image']);?>"></td>
+                                <td><img width='100px' height='60px' src="<?php echo $row['post_image'];?>"></td>
                                 <td><?php echo ucfirst($row['post_comment_count']);?></td>
                                 <td><?php echo ucfirst($row['cat_name']);?></td>
                                 <td><?php echo ucfirst($row['post_tags']);?></td>
-                                <td><?php echo ucfirst($row['post_status']);?></td>
+                                <td><span><?php echo ucfirst($row['post_status']);?></span></td>
                                 <td><a class="btn btn-info" href="posts.php?id=<?php echo $row['post_id'];?>">view</a></td>
-                                <td><a class="btn btn-danger" href="posts.php?del=<?php echo $row['post_id'];?>">Delete</a></td>
-                                <td><a class="btn btn-warning" href="posts.php?uid=<?php echo $row['post_id'];?>">Edit</a></td>
+                                <td><a class="btn btn-info" href="publish_post.php?id=<?php echo $row['post_id'];?>">publish</a></td>
+                                <td><a class="btn btn-danger" href="delete_post.php?del=<?php echo $row['post_id'];?>">Delete</a></td>
+                                <td><a class="btn btn-warning" href="edit_post.php?uid=<?php echo $row['post_id'];?>">Edit</a></td>
                             </tr>
                                 <?php  $i++;}?>   
                         </tbody>

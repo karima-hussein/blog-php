@@ -72,7 +72,7 @@
                             <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col" colspan="2">Action</th>
+                            <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,8 +84,10 @@
                             <tr>
                                 <th scope="row"><?php echo $i;?></th>
                                 <td><?php echo ucfirst($row['cat_name']);?></td>
-                                <td><a class="btn btn-danger" href="categories.php?id=<?php echo $row['cat_id'];?>">Delete</a></td>
-                                <td><a class="btn btn-warning" href="category_update.php?uid=<?php echo $row['cat_id'];?>">Edit</a></td>
+                                <td>
+                                    <a class="btn btn-danger" href="categories.php?id=<?php echo $row['cat_id'];?>">Delete</a>
+                                    <a class="btn btn-warning" href="category_update.php?uid=<?php echo $row['cat_id'];?>">Edit</a>
+                                </td>
                             </tr>
                                 <?php  $i++;}?>   
                         </tbody>
