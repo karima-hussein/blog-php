@@ -48,12 +48,12 @@
                                 <td><?php echo ucfirst($row['post_author']);?></td>
                                 <td><?php echo ucfirst($row['post_date']);?></td>
                                 <td><?php echo ucfirst($row['created_at']);?></td>
-                                <td><img width='100px' height='60px' src="<?php echo $row['post_image'];?>"></td>
+                                <td><img width='100px' height='60px' src="../images/<?php echo $row['post_image'];?>"></td>
                                 <td><?php echo ucfirst($row['post_comment_count']);?></td>
                                 <td><?php echo ucfirst($row['cat_name']);?></td>
                                 <td><?php echo ucfirst($row['post_tags']);?></td>
                                 <td><span><?php echo ucfirst($row['post_status']);?></span></td>
-                                <td><a class="btn btn-info" href="posts.php?id=<?php echo $row['post_id'];?>">view</a></td>
+                                <td><a class="btn btn-info" href="../post.php?id=<?php echo $row['post_id'];?>">view</a></td>
                                 <td><a class="btn btn-info" href="publish_post.php?id=<?php echo $row['post_id'];?>">publish</a></td>
                                 <td><a class="btn btn-danger" href="delete_post.php?del=<?php echo $row['post_id'];?>">Delete</a></td>
                                 <td><a class="btn btn-warning" href="edit_post.php?uid=<?php echo $row['post_id'];?>">Edit</a></td>

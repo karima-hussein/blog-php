@@ -43,6 +43,7 @@
             $query="update post set post_status='1' where post_id='".$this->getPost_id()."'";
             return parent::DML($query); 
         }
+        
         //properties//
 
         /**
@@ -204,5 +205,6 @@
 
                 return $this;
         }
+
     }
 ?>

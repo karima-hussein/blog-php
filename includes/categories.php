@@ -27,6 +27,10 @@
             $query ="select * from category";
             return parent::isExist($query);
         }
+        public function getByCatId(){
+            $query="select * from post where post_status='1' and cat_id='".$this->getCat_id()."'";
+            return parent::isExist($query);
+        }
 
         /**
          * Get the value of cat_name

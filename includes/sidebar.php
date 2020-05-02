@@ -28,7 +28,7 @@
                     $cats = $ob->getAll();
                     while($row = mysqli_fetch_assoc($cats)){
                 ?>
-                <li><a href="#"><?php echo ucfirst($row['cat_name'])?> </a></li>
+                <li><a href="cat_posts.php?cat_id=<?php echo ($row['cat_id'])?>"><?php echo ucfirst($row['cat_name'])?> </a></li>
                     <?php }?>
             </ul>
         </div>

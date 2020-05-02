@@ -37,7 +37,7 @@
                             $img_name= $_FILES['image']['name'];
                             $img_temp =$_FILES['image']['tmp_name'];
                             $des ="../images/$img_name";
-                            $post->setPost_image($des);
+                            $post->setPost_image($img_name);
                             move_uploaded_file($img_temp,$des);
                             $r=$post->add();
                             if($r='done'){

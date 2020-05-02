@@ -42,6 +42,7 @@
                                 }
                             }
                         }
+                        
                         if(isset($_POST['edit_submit'])){
                             $post->setPost_title($_POST['title']);
                             $post->setPost_author($_POST['author']);
@@ -54,7 +55,7 @@
                                 $img_name= $_FILES['image']['name'];
                                 $img_temp =$_FILES['image']['tmp_name'];
                                 $des ="../images/$img_name";
-                                $post->setPost_image($des);
+                                $post->setPost_image($img_name);
                                 move_uploaded_file($img_temp,$des);
                             }
                             $r=$post->update();
@@ -96,7 +97,7 @@
                             <textarea class="form-control" rows="5" id="mytextarea" name="content" ><?php echo htmlentities($post_info['post_content']); ?></textarea>
                         </div>
                         <div class="form-group">
-                            <img src="<?php echo $post_info['post_image'];?>" width="100px" height="60px">
+                            <img src="../images/<?php echo $post_info['post_image'];?>" width="100px" height="60px">
                         </div>
                         <div class="form-group">
                             <label for="image"> New image:</label>
