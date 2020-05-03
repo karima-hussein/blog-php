@@ -83,7 +83,7 @@
                         <div class="form-group">
                             <label for="category">Category:</label>
                             <select class="form-control" id="sel1" name="category" required>
-                                <option selected>Choose category</option>
+                                <option value="" selected>Choose category</option>
                                 <?php
                                     $cats= $cat->getAll();
                                     while($row = mysqli_fetch_assoc($cats)){
