@@ -67,7 +67,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#comments"><i class="fa fa-fw fa-arrows-v"></i> Comments <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="comments" class="collapse">
                             <li>
-                                <a href="#">View all comments</a>
+                                <a href="comments.php">View all comments</a>
                             </li>
                         </ul>
                     </li>

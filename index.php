@@ -1,10 +1,10 @@
 <?php
-$path="";
-$title="Blog";
- include_once "includes/header.php";
- include_once "includes/posts.php"; 
- $post = new post();
- ?>
+    $path="";
+    $title="Blog";
+    include_once "includes/header.php";
+    include_once "includes/posts.php"; 
+    $post = new post();
+?>
     <!-- Page Content -->
     <div class="container">
         <div class="row">
@@ -22,7 +22,7 @@ $title="Blog";
                 <hr>
                 <img class="img-responsive" src="images/<?php echo $row['post_image'];?>" alt="">
                 <hr>
-                <p><?php echo substr($row['post_content'],0,250)."....";?></p>
+                <p><?php echo substr($row['post_content'],0,850)."....";?></p><br>
                 <a class="btn btn-primary" href="post.php?id=<?php echo $row['post_id'];?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <hr>
                     <?php }?>

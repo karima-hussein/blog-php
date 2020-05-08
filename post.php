@@ -27,9 +27,9 @@ if(isset($_GET['id'])){
         <div class="col-lg-8">
             <!-- Blog Post -->
             <!-- Title -->
-            <h1><?php echo $post_info['post_title']; ?></h1>
+            <h1><?php echo ucfirst($post_info['post_title']); ?></h1>
             <!-- Author -->
-            <p class="lead">by <a href="#"><?php echo $post_info['post_author']; ?></a></p>
+            <p class="lead">by <a href="#"><?php echo ucfirst($post_info['post_author']); ?></a></p>
             <hr>
             <!-- Date/Time -->
             <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_info['post_date']; ?> at  <?php echo date('h:i:s a', strtotime($post_info['created_at']));?></p>

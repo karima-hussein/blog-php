@@ -1,6 +1,6 @@
 <?php 
-    require_once $path."includes/db.php";
-    require_once $path."includes/interface.php";
+    include_once $path."includes/db.php";
+    include_once $path."includes/interface.php";
     
     class category extends database implements operation{
         //variables

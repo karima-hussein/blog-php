@@ -5,6 +5,7 @@
     include_once "../includes/categories.php";
     $cat = new category();
 ?>
+
     <!-- Navigation -->
     <?php include_once "../includes/admin_nav.php"; ?>
     <div id="page-wrapper">
@@ -67,7 +68,7 @@
                     }
                 ?>
                 <div class="col-lg-12 table-responsive">
-                    <table class="table table-hover table-striped">
+                    <table class="table table-hover table-striped" id="myTable">
                         <thead class="bg-info">
                             <tr>
                             <th scope="col">#</th>
@@ -100,4 +101,5 @@
     </div>
     <!-- /#page-wrapper -->
 <?php include_once "../includes/admin_footer.php"; ?>
+
 

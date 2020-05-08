@@ -6,7 +6,6 @@
     include_once "../includes/posts.php";
     $post = new post();
     $cat = new category();
-
 ?>
     <!-- Navigation -->
     <?php include_once "../includes/admin_nav.php"; ?>

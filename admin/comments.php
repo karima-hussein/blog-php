@@ -1,9 +1,9 @@
 <?php 
     $path="../";
-    $title = "Posts";
+    $title = "Comments";
     include_once "../includes/admin_header.php"; 
-    include_once "../includes/posts.php";
-    $post = new post();
+    include_once "../includes/comments.php";
+    $comment = new comment();
 ?>
     <!-- Navigation -->
     <?php include_once "../includes/admin_nav.php"; ?>
@@ -23,40 +23,32 @@
                         <thead class="bg-info">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Author</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Content</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Time</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Comments</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Tags</th>
+                                <th scope="col">post_id</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Content</th>
                                 <th scope="col" colspan="3">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
-                                $results=$post->getAll();
+                                $results = $comment->getAll();
                                 $i=1;
                                 while($row = mysqli_fetch_assoc($results)){
                             ?>
                             <tr>
                                 <th scope="row"><?php echo $i;?></th>
-                                <td><?php echo ucfirst($row['post_title']);?></td>
-                                <td><?php echo ucfirst($row['post_author']);?></td>
-                                <td><?php echo ucfirst($row['post_date']);?></td>
-                                <td><?php echo ucfirst($row['created_at']);?></td>
-                                <td><img width='100px' height='60px' src="../images/<?php echo $row['post_image'];?>"></td>
-                                <td><?php echo ucfirst($row['post_comment_count']);?></td>
-                                <td><?php echo ucfirst($row['cat_name']);?></td>
-                                <td><?php echo ucfirst($row['post_tags']);?></td>
-                                <td><span><?php echo ucfirst($row['post_status']);?></span></td>
-                                <td><a class="btn btn-info" href="../post.php?id=<?php echo $row['post_id'];?>">view</a></td>
-                                <td><a class="btn btn-info" href="publish.php?id=<?php echo $row['post_id'];?>">publish</a></td>
-                                <td><a class="btn btn-danger" href="delete.php?del=<?php echo $row['post_id'];?>">Delete</a></td>
-                                <td><a class="btn btn-warning" href="edit.php?uid=<?php echo $row['post_id'];?>">Edit</a></td>
+                                <td><?php echo ucfirst($row['comment_email']);?></td>
+                                <td><?php echo ucfirst($row['comment']);?></td>
+                                <td><?php echo date("y-m-d", strtotime($row['created_at']));?></td>
+                                <td><?php echo date("h:i:s", strtotime($row['created_at']));?></td>
+                                <td><?php echo ucfirst($row['comment_post_id']);?></td>
+                                <td><span><?php echo ($row['comment_status']);?></span></td>
+                                <td><a class="btn btn-info" href="publish.php?comment_id=<?php echo $row['comment_id'];?>">publish</a></td>
+                                <td><a class="btn btn-danger" href="delete.php?comment_id=<?php echo $row['comment_id'];?>">Delete</a></td>
+                                <td><a class="btn btn-warning" href="edit.php?comment_id=<?php echo $row['comment_id'];?>">Edit</a></td>
                             </tr>
                                 <?php  $i++;}?>   
                         </tbody>
