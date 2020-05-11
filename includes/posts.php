@@ -43,6 +43,10 @@
             $query="update post set post_status='1' where post_id='".$this->getPost_id()."'";
             return parent::DML($query); 
         }
+        public function comments_count(){
+            $query="select count(comment_id) as count from comment where comment_post_id='".$this->getPost_id()."'";
+            return parent::isExist($query);
+        }
         
         //properties//
 

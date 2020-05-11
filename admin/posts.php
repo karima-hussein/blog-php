@@ -40,7 +40,12 @@
                             <?php 
                                 $results=$post->getAll();
                                 $i=1;
+                                $count=0;
                                 while($row = mysqli_fetch_assoc($results)){
+                                    $post->setPost_id($row['post_id']);
+                                    $count = $post->comments_count();
+                                    $count = mysqli_fetch_assoc($count);
+                                    $count=$count['count'];
                             ?>
                             <tr>
                                 <th scope="row"><?php echo $i;?></th>
@@ -49,7 +54,7 @@
                                 <td><?php echo ucfirst($row['post_date']);?></td>
                                 <td><?php echo ucfirst($row['created_at']);?></td>
                                 <td><img width='100px' height='60px' src="../images/<?php echo $row['post_image'];?>"></td>
-                                <td><?php echo ucfirst($row['post_comment_count']);?></td>
+                                <td><?php echo $count;?></td>
                                 <td><?php echo ucfirst($row['cat_name']);?></td>
                                 <td><?php echo ucfirst($row['post_tags']);?></td>
                                 <td><span><?php echo ucfirst($row['post_status']);?></span></td>
