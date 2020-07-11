@@ -2,8 +2,13 @@
     $path="../";
     include_once "../includes/posts.php";
     include_once "../includes/comments.php";
+
+    //objects
     $post =new post();
     $comment = new comment();
+
+
+    //approve posts
     if(isset($_GET['id'])){
         if(!ctype_digit($_GET['id'])|| empty($_GET['id'])){
             // header('location:post.php');
@@ -23,6 +28,7 @@
             }
         }
     }
+    //approve comments
     if(isset($_GET['comment_id'])){
         if(!ctype_digit($_GET['comment_id'])|| empty($_GET['comment_id'])){
             // header('location:post.php');
@@ -42,4 +48,6 @@
             }
         }
     }
+    //approve users
+    
 ?>

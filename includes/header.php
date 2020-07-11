@@ -54,6 +54,9 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        <a href="">Register</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

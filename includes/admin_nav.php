@@ -47,11 +47,20 @@
                         <a href="index.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </li>
                     <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#u"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="u" class="collapse">
+                            <li>
+                                <a href="user_view.php">View all users</a>
+                                <a href="add_user.php?a=valid">Add user</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#post"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="post" class="collapse">
                             <li>
-                            <a href="posts.php">View all posts</a>
-                            <a href="add_post.php">Add post</a>
+                                <a href="posts.php">View all posts</a>
+                                <a href="add_post.php">Add post</a>
                             </li>
                         </ul>
                     </li>
@@ -71,14 +80,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#users"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="users" class="collapse">
-                            <li>
-                                <a href="#">View all users</a>
-                            </li>
-                        </ul>
-                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

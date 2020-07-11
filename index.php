@@ -10,7 +10,7 @@
         <div class="row">
             <!-- Blog Entries Column -->
             <div class="col-md-8">
-                <h1 class="page-header">Page Heading<small>Secondary Text</small></h1>
+                <h1 class="page-header">WHATEVER YOU THINK <small>(not realy)</small></h1>
                 <!-- First Blog Post -->
                 <?php 
                     $posts = $post->viewAll();

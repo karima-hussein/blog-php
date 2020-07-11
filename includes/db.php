@@ -19,7 +19,7 @@
                 return "done";
             }
         }
-        
+            
         public function isExist($queryStat){
             //boolean value
             $result =mysqli_query($this->connection,$queryStat);
