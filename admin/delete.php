@@ -2,8 +2,10 @@
     $path="../";
     include_once "../includes/posts.php";
     include_once "../includes/comments.php";
+    include_once "../includes/users.php";
     $post = new post();
     $comment = new comment();
+    $userObj = new user();
     if(isset($_GET['del'])){
         if(!ctype_digit($_GET['del'])|| empty($_GET['del'])){
             // header('location:admin');
@@ -40,4 +42,25 @@
             }
         }
     }
+    //delete user
+    if(isset($_GET['user_id'])){
+        if(!ctype_digit($_GET['user_id'])|| empty($_GET['user_id']) || ctype_space($_GET['user_id'])){
+            // header('location:admin');
+        }else{
+            $userObj->setUser_id(intval($_GET['user_id']));
+            $check = $userObj->getUserById();
+            if(mysqli_num_rows($check)==0){
+                echo "this user doesn't exist";
+            }else{
+                $delete=$userObj->delete();
+                if($delete=='done'){
+                    header('location:user_view.php');
+                }else{
+                    echo "$delete";
+                }
+            }
+        }
+    }
+
+
 ?>

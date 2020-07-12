@@ -17,14 +17,16 @@
              $query="insert into users values ('DEFAULT','".$this->getUsername()."','".$this->getUser_phone()."','".$this->getUser_email()."','".$this->getUser_pass()."','".$this->getFname()."','".$this->getLname()."','".$this->getUser_image()."','".$this->getUser_role()."')";  
              return parent::DML($query);
         }
-        
+
         public function update(){
              $query=" update users SET user_name='".$this->getUsername()."',user_phone='".$this->getUser_phone()."',user_email='".$this->getUser_email()."',user_first_name='".$this->getFname()."',user_last_name='".$this->getLname()."',user_image='".$this->getUser_image()."',user_role='".$this->getUser_role()."' where user_id='".$this->getUser_id()."'";
 
              return parent::DML($query);
         }
-        public function delete(){
 
+        public function delete(){
+             $query="delete from users where user_id='".$this->getUser_id()."'";
+             return parent::DML($query);
         }
         public function search(){
             

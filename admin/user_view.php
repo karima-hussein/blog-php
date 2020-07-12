@@ -49,7 +49,7 @@
                                 <td><?php echo $row['user_email'];?></td>
                                 <td><img width='100px' height='60px' src="../images/users/<?php echo $row['user_image'];?>"></td>
                                 <td><?php echo $row['user_role'];?></td>
-                                <td><a class="btn btn-danger" href="delete.php?del=<?php echo $row['user_id'];?>">Delete</a></td>
+                                <td><a class="btn btn-danger" href="delete.php?user_id=<?php echo $row['user_id'];?>">Delete</a></td>
                                 <td><a class="btn btn-warning" href="edit_user.php?user_id=<?php echo $row['user_id'];?>">Edit</a></td>
                             </tr>
                                 <?php  $i++;}?>   
