@@ -29,7 +29,7 @@
                                 <th scope="col">phone</th>
                                 <th scope="col">email</th>
                                 <th scope="col">image</th>
-                                <!-- <th scope="col">role</th> -->
+                                <th scope="col">role</th>
                                 <th scope="col" colspan="3">Action</th>
                             </tr>
                         </thead>
@@ -48,8 +48,9 @@
                                 <td><?php echo $row['user_phone'];?></td>
                                 <td><?php echo $row['user_email'];?></td>
                                 <td><img width='100px' height='60px' src="../images/users/<?php echo $row['user_image'];?>"></td>
+                                <td><?php echo $row['user_role'];?></td>
                                 <td><a class="btn btn-danger" href="delete.php?del=<?php echo $row['user_id'];?>">Delete</a></td>
-                                <td><a class="btn btn-warning" href="edit.php?user_id=<?php echo $row['user_id'];?>">Edit</a></td>
+                                <td><a class="btn btn-warning" href="edit_user.php?user_id=<?php echo $row['user_id'];?>">Edit</a></td>
                             </tr>
                                 <?php  $i++;}?>   
                         </tbody>

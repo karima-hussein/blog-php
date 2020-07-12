@@ -1,6 +1,6 @@
 <?php 
     $path  = "../";
-    $title = 'add user';
+    $title = 'Edit user';
     include_once "../includes/admin_header.php"; 
     include_once "../includes/users.php";
     $userObj = new user();
@@ -19,10 +19,28 @@
                     </ol>
                 </div>
                 <div class="col-lg-12 table-responsive">
+                    <?php 
+                        //getting user info by id
+                        if(isset($_GET['user_id'])){
+                            if(!ctype_space($_GET['user_id']) || !empty($_GET['user_id']) || ctype_digit($_GET['user_id'])){
+                                //use id 
+                                $userObj->setUser_id(intval($_GET['user_id']));
+                                if(mysqli_num_rows($userObj->getUserById())==0){
+                                    // header('location:404.php');                                    
+                                }else{
+                                    $user_info=mysqli_fetch_assoc($userObj->getUserById());
+                                }
+                            }else{
+                                // header('location:404.php');                                
+                            }
+                        }else{
+                            // header('location:404.php');
+                        }
+                    ?>
                     <?php
-                        if(isset($_POST['user_submit'])){
+                        // submit changes
+                        if(isset($_POST['edit_submit'])){
                             $userName=$_POST['user_name'];
-                            $pass=$_POST['password'];
                             $fname=$_POST['fname'];
                             $lname=$_POST['lname'];
                             $email=$_POST['user_email'];
@@ -33,7 +51,7 @@
                             $img_name= $_FILES['image']['name'];
                             $img_temp =$_FILES['image']['tmp_name'];
                             if($_FILES['image']['size'] == 0 || $_FILES['image']['error'] == 4){
-                                $image='default.png';
+                                $image=$user_info['user_image'];
                             }else{
                                 $des ="../images/users/$img_name";
                                 $image=$img_name;
@@ -41,22 +59,22 @@
                             }
 
                             $userObj->setUsername($userName);
-                            $userObj->setUser_pass($pass);
                             $userObj->setFname($fname);
                             $userObj->setLname($lname);
                             $userObj->setUser_email($email);
                             $userObj->setUser_phone($phone);
                             $userObj->setUser_role($role);
                             $userObj->setUser_image($image);
-                            $add=$userObj->add();
-                            if($add =='done'){
-                                echo 'user has been added ';
-                            }else if(strpos($add,'user_email')){
+                            $update=$userObj->update();
+                            if($update =='done'){
+                                echo 'user information has been updated ';
+                                header("refresh:2 ; url=user_view.php");
+                            }else if(strpos($update,'user_email')){
                                 echo 'this email already exists';
-                            }else if(strpos($add,'user_name')){
+                            }else if(strpos($update,'user_name')){
                                 echo 'this username already exists';
                             }else{
-                                echo $add;
+                                echo $update;
                             }
                             
                         }
@@ -64,41 +82,41 @@
                     <form method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="fname">First name:</label>
-                            <input type="text" value="<?php echo isset($_POST["fname"]) ? $_POST["fname"] : ''; ?>" class="form-control" id="fname" placeholder="Enter your first name" name="fname" required>
+                            <input type="text" value="<?php echo $user_info['user_first_name']; ?>" class="form-control" id="fname" placeholder="Enter user's first name" name="fname" required>
                         </div>
                         <div class="form-group">
                             <label for="lname">Last name:</label>
-                            <input type="text" value="<?php echo isset($_POST["lname"]) ? $_POST["lname"] : ''; ?>" class="form-control" id="lname" placeholder="Enter your last name" name="lname" required>
+                            <input type="text" value="<?php echo $user_info['user_last_name']; ?>" class="form-control" id="lname" placeholder="Enter user's last name" name="lname" required>
                         </div>
                         <div class="form-group">
                             <label for="user_name">Username:</label>
-                            <input type="text" class="form-control" value="<?php echo isset($_POST["user_name"]) ? $_POST["user_name"] : ''; ?>"id="user_name" placeholder="Enter your username " name="user_name" required>
+                            <input type="text" class="form-control" value="<?php echo $user_info['user_name']; ?>"id="user_name" placeholder="Enter the username " name="user_name" required>
                         </div>
                         <div class="form-group">
                             <label for="user_mail">Email:</label>
-                            <input type="email" class="form-control" value="<?php echo isset($_POST["user_email"]) ? $_POST["user_email"] : ''; ?>"id="user_email" placeholder="Enter your email address" name="user_email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input type="password" value="<?php echo isset($_POST["password"]) ? $_POST["password"] : ''; ?>" class="form-control" id="password" placeholder="Enter your password" name="password" required>
+                            <input type="email" class="form-control" value="<?php echo $user_info['user_email']; ?>"id="user_email" placeholder="Enter user's email address" name="user_email" required>
                         </div>
                         <div class="form-group">
                             <label for="user_phone">Phone number:</label>
-                            <input type="text" class="form-control" value="<?php echo isset($_POST["user_phone"]) ? $_POST["user_phone"] : ''; ?>"id="user_phone" placeholder="Enter your userphone" name="user_phone" required>
+                            <input type="text" class="form-control" value="<?php echo $user_info['user_phone']; ?>"id="user_phone" placeholder="Enter user's phone" name="user_phone" required>
                         </div>
                         <div class="form-group">
                             <label for="role">Role:</label>
                             <select class="form-control" id="role" name="role" required>
-                                <option value="" selected>Choose role</option>
-                                <option value="user" >user</option>
-                                <option value="admin" >admin</option>
+                                <option value="" >Choose role</option>
+                                <option value="user" <?php if($user_info['user_role']=='user') echo "selected"; ?> >user</option>
+                                <option value="admin" <?php if($user_info['user_role']=='admin') "selected"; ?> >admin</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">current image:</label>
+                            <img src="../images/users/<?php echo $user_info['user_image'];?>" heigh="100px" width="100px">
                         </div>
                         <div class="form-group">
                             <label for="image">Image:</label>
                             <input type="file" class="form-control" id="image" name="image">
                         </div>
-                        <button type="submit"name="user_submit" class="btn btn-primary">Submit</button>
+                        <button type="submit"name="edit_submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
