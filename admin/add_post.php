@@ -41,8 +41,8 @@
                             move_uploaded_file($img_temp,$des);
                             $r=$post->add();
                             if($r='done'){
-                                header('location:posts.php');
-                                echo "done";
+                                echo 'your post has been added';
+                                header('refresh:3; url=posts.php');
                             }else{
                                 echo $r;
                             }
@@ -81,7 +81,7 @@
                             <label for="image">Image:</label>
                             <input type="file" class="form-control" id="image" name="image" required>
                         </div>
-                        <button type="submit"name="post_submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="post_submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

@@ -10,9 +10,10 @@
          var $post_category;
          var $post_tags;
          var $post_image;
+
         //interface functions
         public function add(){
-            $query = "insert into post values(Default,'".$this->getPost_title()."','".$this->getPost_content()."','".$this->getPost_author()."','".$this->getPost_image()."','".$this->getPost_category()."',NOW(),'".$this->getPost_tags()."',Default,Default,NOW())";
+            $query = "insert into post values(Default,'".$this->getPost_title()."','".$this->getPost_content()."','".$this->getPost_author()."','".$this->getPost_image()."','".$this->getPost_category()."',NOW(),'".$this->getPost_tags()."',Default,NOW())";
             return parent::DML($query);
         }
         public function update(){
@@ -29,6 +30,10 @@
         }
         public function getAll(){
             $query ="select * from post_view";
+            return parent::isExist($query);
+        }
+        public function count(){
+            $query= "select count(post_id) as count from post";
             return parent::isExist($query);
         }
         public function viewAll(){

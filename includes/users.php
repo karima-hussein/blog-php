@@ -36,6 +36,11 @@
             return parent::isExist($query);
         }
 
+        public function count(){
+            $query= "select count(user_id) as count FROM users";
+            return parent::isExist($query);
+        }
+        
         public function getUserById(){
             $query="select * from users where user_id='".$this->getUser_id()."'";
             return parent::isExist($query);

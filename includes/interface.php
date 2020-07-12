@@ -5,5 +5,6 @@
         function delete();
         function search();
         function getAll();
+        function count();
     }
 ?>
